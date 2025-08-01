@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-primary: #030014;
@@ -17,12 +17,12 @@
 
   --breakpoint-xs: 480px;
 
-  --background-image-hero-pattern: url("/hero-bg.png");
+  --background-image-hero-pattern: url('/hero-bg.png');
 }
 
 @layer base {
   body {
-    font-family: "DM Sans", serif;
+    font-family: 'DM Sans', serif;
     font-optical-sizing: auto;
     background: #030014;
   }
@@ -149,7 +149,7 @@
 @utility fancy-text {
   -webkit-text-stroke: 5px rgba(206, 206, 251, 0.5);
   font-size: 190px;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
 }
 
 @utility hide-scrollbar {

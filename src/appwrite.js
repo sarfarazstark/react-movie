@@ -1,4 +1,4 @@
-import { Client, Databases, Query, ID } from "appwrite";
+import { Client, Databases, Query, ID } from 'appwrite';
 
 const DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID;
 const COLLECTION_ID = import.meta.env.VITE_APPWRITE_COLLECTION_ID;
@@ -12,7 +12,7 @@ export const updateSearchCount = async (searchTerm, movie) => {
   // Check if search term exist
   try {
     const result = await db.listDocuments(DATABASE_ID, COLLECTION_ID, [
-      Query.equal("searchTerm", searchTerm),
+      Query.equal('searchTerm', searchTerm),
     ]);
 
     if (result.documents.length > 0) {
@@ -31,7 +31,7 @@ export const updateSearchCount = async (searchTerm, movie) => {
       });
     }
   } catch (error) {
-    console.error("Error updating search count:", error);
+    console.error('Error updating search count:', error);
   }
 };
 
@@ -39,12 +39,12 @@ export const getTrendingMovies = async () => {
   try {
     const result = await db.listDocuments(DATABASE_ID, COLLECTION_ID, [
       Query.limit(5),
-      Query.orderDesc("count"),
+      Query.orderDesc('count'),
     ]);
 
     return result.documents;
   } catch (error) {
-    console.error("Error fetching trending movies:", error);
+    console.error('Error fetching trending movies:', error);
     return [];
   }
 };
