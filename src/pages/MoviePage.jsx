@@ -66,13 +66,13 @@ export default function MoviePage() {
         </Link>
       </nav>
 
-      <main className='flex flex-col items-start bg-movie-container max-w-6xl p-12 rounded-2xl shadow-[0_0px_200px] shadow-shadow'>
+      <main className='flex flex-col items-start bg-movie-container max-w-6xl p-6 md:p-12 rounded-2xl shadow-[0_0px_200px] shadow-shadow'>
         {error && <p className='text-red-500'>{error}</p>}
 
         {!error && (
           <>
             {/* Header */}
-            <section className='flex justify-between items-start gap-4 w-full'>
+            <section className='flex flex-col md:flex-row justify-between items-start gap-4 w-full'>
               <div>
                 <h2 className='text-4xl mb-2'>{title}</h2>
                 <div className='flex items-center gap-2 text-gray-400'>
@@ -81,7 +81,7 @@ export default function MoviePage() {
                   <span>{movieHr}</span>
                 </div>
               </div>
-              <div className='flex gap-8 items-end text-xs'>
+              <div className='flex gap-4 md:gap-8 items-end text-xs'>
                 <Badge>
                   <img
                     src='/star.svg'
@@ -101,7 +101,7 @@ export default function MoviePage() {
 
             {/* Content */}
             <section className='flex flex-col md:flex-row gap-5 mt-5 w-full'>
-              <figure className='w-[30%] '>
+              <figure className='w-full md:w-[30%] shadow-md shadow-gray-950'>
                 <img
                   className='object-contain h-full w-full rounded-lg'
                   src={
@@ -113,7 +113,7 @@ export default function MoviePage() {
                 />
               </figure>
 
-              <figure className='w-[80%] shadow-md shadow-gray-950 relative'>
+              <figure className='w-full md:w-[80%] shadow-md shadow-gray-950 relative'>
                 <img
                   className='object-contain h-full w-full rounded-lg'
                   src={
@@ -139,10 +139,10 @@ export default function MoviePage() {
                 </span>
               </figure>
             </section>
-            <section className='grid grid-cols-[1fr_auto] items-start gap-4 mt-8 w-full'>
-              <section className='grid grid-cols-[150px_1fr] items-start gap-4 pr-10'>
-                <div className='grid grid-cols-subgrid col-span-2'>
-                  <h5 className='text-md leading-6'>Genres</h5>
+            <section className='grid grid-rows-[1fr_auto] md:grid-cols-[1fr_auto] items-start gap-4 mt-8 w-full'>
+              <section className='grid grid-rows-2 md:grid-cols-[150px_1fr] md:grid-rows-1 gap-2 md:gap-4 md:pr-10'>
+                <div className='grid grid-rows-subgrid col-span-2 row-span-2 md:grid-cols-subgrid md:row-span-1'>
+                  <h5 className='text-md leading-6 font-bold'>Genres</h5>
                   <ul className='flex flex-wrap gap-2 text-xs'>
                     {genres.map((genre) => (
                       <li key={genre.id}>
@@ -151,12 +151,12 @@ export default function MoviePage() {
                     ))}
                   </ul>
                 </div>
-                <div className='grid grid-cols-subgrid col-span-2'>
-                  <h5 className='text-md leading-6'>Overview</h5>
+                <div className='grid grid-rows-subgrid col-span-2 row-span-2 md:grid-cols-subgrid md:row-span-1'>
+                  <h5 className='text-md leading-6 font-bold'>Overview</h5>
                   <p className='text-md leading-6'>{overview}</p>
                 </div>
-                <div className='grid grid-cols-subgrid col-span-2'>
-                  <h5 className='text-md'>Release Date</h5>
+                <div className='grid grid-rows-subgrid col-span-2 row-span-2 md:grid-cols-subgrid md:row-span-1'>
+                  <h5 className='text-md font-bold'>Release Date</h5>
                   <p className='text-md leading-6 text-link'>
                     {new Date(release_date).toLocaleDateString(undefined, {
                       year: 'numeric',
@@ -166,50 +166,52 @@ export default function MoviePage() {
                     (Worldwide)
                   </p>
                 </div>
-                <div className='grid grid-cols-subgrid col-span-2'>
-                  <h5 className='text-md leading-6'>Countries</h5>
+                <div className='grid grid-rows-subgrid col-span-2 row-span-2 md:grid-cols-subgrid md:row-span-1'>
+                  <h5 className='text-md leading-6 font-bold'>Countries</h5>
                   <p className='text-md leading-6 text-link'>
                     {production_countries
                       .map((country) => country.name)
                       .join(' • ')}
                   </p>
                 </div>
-                <div className='grid grid-cols-subgrid col-span-2'>
-                  <h5 className='text-md'>Status</h5>
+                <div className='grid grid-rows-subgrid col-span-2 row-span-2 md:grid-cols-subgrid md:row-span-1'>
+                  <h5 className='text-md font-bold'>Status</h5>
                   <p className='text-md leading-6 text-link'>
                     {status.charAt(0).toUpperCase() + status.slice(1)}
                   </p>
                 </div>
-                <div className='grid grid-cols-subgrid col-span-2'>
-                  <h5 className='text-md leading-6'>Languages</h5>
+                <div className='grid grid-rows-subgrid col-span-2 row-span-2 md:grid-cols-subgrid md:row-span-1'>
+                  <h5 className='text-md leading-6 font-bold'>Languages</h5>
                   <p className='text-md leading-6 text-link'>
                     {spoken_languages
                       .map((language) => language.name)
                       .join(' • ')}
                   </p>
                 </div>
-                <div className='grid grid-cols-subgrid col-span-2'>
-                  <h5 className='text-md'>Budget</h5>
+                <div className='grid grid-rows-subgrid col-span-2 row-span-2 md:grid-cols-subgrid md:row-span-1'>
+                  <h5 className='text-md font-bold'>Budget</h5>
                   <p className='text-md leading-6 text-link'>
                     {budget > 0
                       ? `$${(budget / 1_000_000).toFixed(2)} million`
                       : 'N/A'}
                   </p>
                 </div>
-                <div className='grid grid-cols-subgrid col-span-2'>
-                  <h5 className='text-md'>Revenue</h5>
+                <div className='grid grid-rows-subgrid col-span-2 row-span-2 md:grid-cols-subgrid md:row-span-1'>
+                  <h5 className='text-md font-bold'>Revenue</h5>
                   <p className='text-md leading-6 text-link'>
                     {revenue > 0
                       ? `$${(revenue / 1_000_000).toFixed(2)} million`
                       : 'N/A'}
                   </p>
                 </div>
-                <div className='grid grid-cols-subgrid col-span-2'>
-                  <h5 className='text-md'>Tagline</h5>
+                <div className='grid grid-rows-subgrid col-span-2 row-span-2 md:grid-cols-subgrid md:row-span-1'>
+                  <h5 className='text-md font-bold'>Tagline</h5>
                   <p className='text-md leading-6 text-link'>{tagline}</p>
                 </div>
-                <div className='grid grid-cols-subgrid col-span-2'>
-                  <h5 className='text-md leading-6'>Production Companies</h5>
+                <div className='grid grid-rows-subgrid col-span-2 row-span-2 md:grid-cols-subgrid md:row-span-1'>
+                  <h5 className='text-md leading-6 font-bold'>
+                    Production Companies
+                  </h5>
                   <p className='text-md leading-6 text-link'>
                     {production_companies
                       .map((company) => company.name)
@@ -224,7 +226,7 @@ export default function MoviePage() {
                     : undefined
                 }
                 rel='noopener noreferrer'
-                className='inline-flex items-center gap-2 bg-gradient text-primary font-bold px-4 py-2 rounded-md hover:bg-primary/80 transition-all'
+                className='inline-flex items-center justify-center gap-2 bg-gradient text-primary font-bold px-4 py-2 rounded-md hover:bg-primary/80 transition-all'
               >
                 Visit Homepage <ArrowRight strokeWidth={0.5} size={16} />
               </a>
