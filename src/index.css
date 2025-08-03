@@ -15,6 +15,14 @@
 
   --font-dm-sans: DM Sans, sans-serif;
 
+  --color-shadow: rgba(172, 139, 255, 0.3);
+
+  --color-link: #d6c7ff;
+
+  --color-badge: #221f3d;
+
+  --color-movie-container: #0f0d23;
+
   --breakpoint-xs: 480px;
 
   --background-image-hero-pattern: url('/hero-bg.png');
@@ -140,10 +148,17 @@
       @apply text-gray-100 font-medium text-base;
     }
   }
+
+  main.movie {
+  }
 }
 
 @utility text-gradient {
   @apply bg-linear-to-r from-[#D6C7FF] to-[#AB8BFF] bg-clip-text text-transparent;
+}
+
+@utility bg-gradient {
+  @apply bg-linear-to-r from-[#D6C7FF] to-[#AB8BFF];
 }
 
 @utility fancy-text {
